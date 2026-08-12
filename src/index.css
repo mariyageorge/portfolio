@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+body {
+  @apply bg-paper text-ink font-body antialiased dark:bg-ink dark:text-paper;
+}
+
+::selection {
+  @apply bg-teal/30;
+}
+
+:focus-visible {
+  outline: 2px solid #34D9BE;
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* eyebrow / section tag, styled like a code comment */
+.eyebrow {
+  @apply font-mono text-sm text-teal-soft dark:text-teal tracking-wide uppercase tracking-[0.22em];
+}
+
+.section-shell {
+  @apply mx-auto w-full max-w-5xl px-6 py-24 sm:px-8;
+}
+
+.card {
+  @apply rounded-xl border border-paper-border bg-paper-elevated dark:border-ink-border dark:bg-ink-elevated;
+}
