@@ -21,28 +21,73 @@ html {
 }
 
 body {
-  @apply bg-paper text-ink font-body antialiased dark:bg-ink dark:text-paper;
+  @apply bg-paper text-slate-900 font-body antialiased dark:bg-ink dark:text-slate-100;
+  overflow-x: hidden;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 9px;
+}
+::-webkit-scrollbar-track {
+  background: #090d16;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e263d;
+  border-radius: 9999px;
+  border: 2px solid #090d16;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #374366;
 }
 
 ::selection {
-  @apply bg-teal/30;
+  background-color: rgba(139, 92, 246, 0.35);
+  color: #ffffff;
 }
 
 :focus-visible {
-  outline: 2px solid #34D9BE;
+  outline: 2px solid #8b5cf6;
   outline-offset: 3px;
-  border-radius: 2px;
+  border-radius: 4px;
 }
 
-/* eyebrow / section tag, styled like a code comment */
+/* Eyebrow badge styled like a subtle modern tag */
 .eyebrow {
-  @apply font-mono text-sm text-teal-soft dark:text-teal tracking-wide uppercase tracking-[0.22em];
+  @apply inline-flex items-center gap-1.5 font-mono text-[11px] font-medium uppercase tracking-[0.2em] text-violet-deep dark:text-cyan-bright;
 }
 
 .section-shell {
-  @apply mx-auto w-full max-w-5xl px-6 py-24 sm:px-8;
+  @apply relative mx-auto w-full max-w-5xl px-6 py-20 sm:px-8 lg:py-24;
 }
 
-.card {
-  @apply rounded-xl border border-paper-border bg-paper-elevated dark:border-ink-border dark:bg-ink-elevated;
+/* Glassmorphism Card System */
+.glass-card {
+  @apply relative rounded-2xl border border-paper-border/80 bg-paper-surface/90 shadow-sm backdrop-blur-md transition-all duration-300 dark:border-white/[0.08] dark:bg-ink-surface/75 dark:shadow-[0_4px_24px_rgba(0,0,0,0.35)];
+}
+
+.glass-card:hover {
+  @apply dark:border-white/[0.16] dark:shadow-[0_8px_32px_rgba(139,92,246,0.12)];
+}
+
+.glass-panel {
+  @apply rounded-3xl border border-paper-border/80 bg-paper-surface/95 backdrop-blur-xl dark:border-white/[0.09] dark:bg-ink-surface/85 dark:shadow-[0_8px_40px_rgba(0,0,0,0.5)];
+}
+
+/* Gradient text accent */
+.gradient-text-violet {
+  @apply bg-gradient-to-r from-violet to-cyan bg-clip-text text-transparent;
+}
+
+.gradient-text-cyan {
+  @apply bg-gradient-to-r from-cyan-bright via-teal-soft to-violet-bright bg-clip-text text-transparent;
+}
+
+.gradient-text-amber {
+  @apply bg-gradient-to-r from-aws-amber to-aws-orange bg-clip-text text-transparent;
+}
+
+/* Morphing Blob element styles */
+.morph-blob {
+  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
 }

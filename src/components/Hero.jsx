@@ -1,64 +1,98 @@
-import { Github, Linkedin, Download, ArrowRight } from 'lucide-react'
+import { ArrowRight, Download, Github, Linkedin, Mail, Sparkles } from 'lucide-react'
 import { profile, heroDescription } from '../data/portfolioData'
 import PipelineAnimation from './PipelineAnimation'
 
 export default function Hero() {
   return (
-    <section id="top" className="section-shell pb-16 pt-16 sm:pt-24">
-      <div className="grid gap-14 md:grid-cols-[1.1fr,0.9fr] md:items-center">
+    <section id="top" className="section-shell pt-12 pb-16 sm:pt-20 sm:pb-24">
+      <div className="grid gap-12 lg:grid-cols-[1.15fr,0.85fr] lg:items-center">
+        {/* Left Column: Headline and Actions */}
         <div className="animate-reveal">
-          <p className="eyebrow mb-4">design + code</p>
-          <h1 className="font-display text-4xl font-semibold leading-[1.08] tracking-tight sm:text-5xl">
-            {profile.name}
+          {/* Status Badge */}
+          <div className="inline-flex items-center gap-2 rounded-full border border-violet/30 bg-violet/10 px-3.5 py-1 text-xs font-mono text-violet-deep dark:border-cyan/30 dark:bg-cyan/10 dark:text-cyan-bright mb-6 backdrop-blur-md">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-bright opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-bright"></span>
+            </span>
+            <span>{profile.availability}</span>
+          </div>
+
+          {/* Name & Headline */}
+          <h1 className="font-display text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl text-slate-900 dark:text-white leading-[1.08]">
+            Hi, I'm <span className="gradient-text-violet">{profile.name}</span>
           </h1>
-          <p className="mt-3 font-mono text-base text-teal-soft dark:text-teal">
-            Integrated MCA student and full-stack developer building polished web experiences.
+
+          <p className="mt-4 font-display text-lg sm:text-xl font-medium text-slate-700 dark:text-slate-300">
+            Integrated MCA Student & Aspiring Software Developer
           </p>
-          <p className="mt-6 max-w-lg text-base leading-relaxed text-ink/75 dark:text-paper/75">
+
+          <p className="mt-2 font-mono text-sm text-violet-deep dark:text-cyan-bright">
+            Full-Stack Development · AI-Powered Applications · Cloud Technologies
+          </p>
+
+          <p className="mt-5 max-w-xl text-base leading-relaxed text-slate-600 dark:text-slate-300/85">
             {heroDescription}
           </p>
 
+          {/* Action CTAs */}
           <div className="mt-8 flex flex-wrap items-center gap-3">
+            {/* Primary CTA: Explore Projects */}
             <a
               href="#projects"
-              className="flex items-center gap-2 rounded-full bg-ink px-5 py-2.5 font-mono text-[13px] text-paper transition-colors hover:bg-ink/85 dark:bg-teal dark:text-ink dark:hover:bg-teal/85"
+              className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-violet to-cyan px-6 py-3 font-mono text-[13px] font-semibold text-white shadow-lg shadow-violet/25 transition-all duration-200 hover:shadow-cyan/25 hover:scale-[1.02] active:scale-[0.98]"
             >
-              View Projects
-              <ArrowRight size={14} />
+              Explore Projects
+              <ArrowRight size={15} className="transition-transform duration-200 group-hover:translate-x-1" />
             </a>
+
+            {/* Secondary CTA: Contact */}
             <a
-              href={profile.github}
-              target="_blank"
-              rel="noreferrer"
-              className="flex items-center gap-2 rounded-full border border-paper-border px-5 py-2.5 font-mono text-[13px] transition-colors hover:border-teal hover:text-teal-soft dark:border-ink-border dark:hover:text-teal"
+              href="#contact"
+              className="inline-flex items-center gap-2 rounded-full border border-paper-border bg-paper-surface/80 px-5 py-3 font-mono text-[13px] font-medium text-slate-700 backdrop-blur-md transition-all duration-200 hover:border-violet hover:text-violet dark:border-white/10 dark:bg-ink-surface/80 dark:text-slate-200 dark:hover:border-cyan-bright dark:hover:text-cyan-bright"
             >
-              <Github size={14} />
-              GitHub
+              <Mail size={15} />
+              Get in Touch
             </a>
-            <a
-              href={profile.linkedin}
-              target="_blank"
-              rel="noreferrer"
-              className="flex items-center gap-2 rounded-full border border-paper-border px-5 py-2.5 font-mono text-[13px] transition-colors hover:border-teal hover:text-teal-soft dark:border-ink-border dark:hover:text-teal"
-            >
-              <Linkedin size={14} />
-              LinkedIn
-            </a>
+
+            {/* Resume Button */}
             <a
               href={profile.resumePath}
               download
-              className="flex items-center gap-2 rounded-full border border-paper-border px-5 py-2.5 font-mono text-[13px] transition-colors hover:border-teal hover:text-teal-soft dark:border-ink-border dark:hover:text-teal"
+              className="inline-flex items-center gap-2 rounded-full border border-paper-border bg-paper-surface/80 px-4 py-3 font-mono text-[13px] font-medium text-slate-700 backdrop-blur-md transition-all duration-200 hover:border-violet hover:text-violet dark:border-white/10 dark:bg-ink-surface/80 dark:text-slate-200 dark:hover:border-cyan-bright dark:hover:text-cyan-bright"
             >
-              <Download size={14} />
+              <Download size={15} />
               Resume
             </a>
+
+            {/* Social Links */}
+            <div className="flex items-center gap-2 ml-1">
+              <a
+                href={profile.github}
+                target="_blank"
+                rel="noreferrer"
+                aria-label="GitHub Profile"
+                className="flex h-11 w-11 items-center justify-center rounded-full border border-paper-border bg-paper-surface/80 text-slate-700 backdrop-blur-md transition-all duration-200 hover:border-violet hover:text-violet hover:scale-105 dark:border-white/10 dark:bg-ink-surface/80 dark:text-slate-300 dark:hover:border-cyan-bright dark:hover:text-cyan-bright"
+              >
+                <Github size={17} />
+              </a>
+              <a
+                href={profile.linkedin}
+                target="_blank"
+                rel="noreferrer"
+                aria-label="LinkedIn Profile"
+                className="flex h-11 w-11 items-center justify-center rounded-full border border-paper-border bg-paper-surface/80 text-slate-700 backdrop-blur-md transition-all duration-200 hover:border-violet hover:text-violet hover:scale-105 dark:border-white/10 dark:bg-ink-surface/80 dark:text-slate-300 dark:hover:border-cyan-bright dark:hover:text-cyan-bright"
+              >
+                <Linkedin size={17} />
+              </a>
+            </div>
           </div>
         </div>
 
-        <div className="animate-reveal [animation-delay:120ms]">
+        {/* Right Column: Architectural Visual */}
+        <div className="animate-reveal [animation-delay:150ms]">
           <PipelineAnimation />
-          <p className="mt-3 font-mono text-[11px] text-ink/45 dark:text-paper/45">
-            a request, end to end — the shape of the work
+          <p className="mt-3 text-center font-mono text-[11px] text-slate-500 dark:text-slate-400">
+            End-to-end full-stack development & cloud deployment pipeline
           </p>
         </div>
       </div>
